@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './css/messagesList.css';
 
 class MessagesList extends React.Component {
     constructor(props) {
@@ -9,13 +10,26 @@ class MessagesList extends React.Component {
 
     render() {
         return (
-            <div>
-                MessagesList
+            <div className="message-list">
+                <ul>
+                    {this.props.messages.map (message => {
+                        return (
+                            <li key={message.id}>
+                                <div>
+                                    {message.senderId}
+                                </div>
+                                <div>
+                                    {message.text}
+                                </div>
+                            </li>
+                        )
+                    })}
+                </ul>
             </div>
         );
     }
 }
 
-MessagesList.propTypes = {};
+// MessagesList.propTypes = {};
 
 export default MessagesList;

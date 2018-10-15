@@ -10,12 +10,12 @@ class SendMessageForm extends React.Component {
     render() {
         return (
             <div>SendMessageForm
-                
+
             </div>
         );
     }
 }
 
-SendMessageForm.propTypes = {};
+// SendMessageForm.propTypes = {};
 
 export default SendMessageForm;
