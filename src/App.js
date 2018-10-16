@@ -3,8 +3,7 @@ import './App.css';
 import Title from './components/title';
 import MessagesList from './components/messagesList';
 import SendMessageForm from './components/sendMessageForm';
-import { Chatkit} from '@pusher/chatkit'; 
-// import { ChatManager } from '@pusher/chatkit';
+import { Chatkit, ChatManager,TokenProvider } from '@pusher/chatkit';
 
 const DUMMY_DATA = [{
   senderId: "Luit",
@@ -29,14 +28,41 @@ class App extends React.Component {
     }
   }
 
-//   componentDidMount() {
-//     const chatManager = new Chatkit.ChatManager({
-//       instanceLocator: instanceLocator,
-//       userId: username,
-//       tokenProvider: new Chatkit.TokenProvider({
-//         url: testToken
-//       })
-//    })  
+  // componentDidMount() {
+  //   const chatManager = new Chatkit.ChatManager({
+  //     instanceLocator: instanceLocator,
+  //     userId: username,
+  //     tokenProvider: new Chatkit.TokenProvider({
+  //       url: testToken
+  //     })
+  //   })
+
+  //   chatManager.connect()
+  //   .then(currentUser => {
+  //     this.currentUser = currentUser
+  //     this.currentUser.subscribeToRoom({
+  //       roomId: roomId,
+  //       hooks: {
+  //         onNewMessage: message => {
+  //           this.setState({
+  //             messages: [...this.state.messages, message]
+  //           })
+  //         }
+
+  //       }
+  //     })
+  //   })
+
+  // }
+
+  // componentDidMount() {
+  //   const chatManager = new Chatkit.ChatManager({
+  //     instanceLocator: instanceLocator,
+  //     userId: username,
+  //     tokenProvider: new Chatkit.TokenProvider({
+  //       url: testToken
+  //     })
+  //  })  
 
 //    chatManager.connect()
 //    .then(currentUser => {
