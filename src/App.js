@@ -27,6 +27,7 @@ class App extends React.Component {
     this.state = {
        messages: DUMMY_DATA
     }
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   componentDidMount() {
@@ -56,12 +57,19 @@ class App extends React.Component {
 
   }
 
+  sendMessage(text) {
+    this.currentUser.sendMessage({
+      text: text,
+      roomId: roomId
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Title />
         <MessagesList messages={this.state.messages} />
-        <SendMessageForm />     
+        <SendMessageForm sendMessage={this.sendMessage} />     
       </div>
     );
   }

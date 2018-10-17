@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class Title extends React.Component {
     constructor(props) {
@@ -9,13 +8,11 @@ class Title extends React.Component {
 
     render() {
         return (
-            <div>title
-                
+            <div>
+                <p className="title">Cika Chat App!</p>
             </div>
         );
     }
 }
-
-Title.propTypes = {};
 
 export default Title;
