@@ -1,9 +1,11 @@
 import React, {} from 'react';
 import './App.css';
-import Title from './components/title';
-import MessagesList from './components/messagesList';
-import SendMessageForm from './components/sendMessageForm';
+import Title from './components/Title.js';
+import MessagesList from './components/MessagesList';
+import SendMessageForm from './components/SendMessageForm';
 import Chatkit from '@pusher/chatkit';
+import RoomList from './components/RoomList';
+import NewRoomForm from './components/NewRoomForm';
 
 const DUMMY_DATA = [{
   senderId: "Luit",
@@ -25,7 +27,9 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-       messages: DUMMY_DATA
+       messages: DUMMY_DATA,
+       joinableRooms: [],
+       joinedRooms: []
     }
     this.sendMessage = this.sendMessage.bind(this);
   }
@@ -42,6 +46,16 @@ class App extends React.Component {
     chatManager.connect()
     .then(currentUser => {
       this.currentUser = currentUser
+
+      this.currentUser.getJoinableRooms()
+      .then(joinableRooms => {
+        this.setState({
+          joinableRooms,
+          joinedRooms: this.currentUser.rooms
+        })
+      })
+      .catch(err => console.log('error on joinable rooms: ', err))
+
       this.currentUser.subscribeToRoom({
         roomId: roomId,
         hooks: {
@@ -54,6 +68,7 @@ class App extends React.Component {
         }
       })
     })
+    .catch(err => console.log('error on connecting: ', err))
 
   }
 
@@ -68,6 +83,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Title />
+        <RoomList rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
+        <NewRoomForm />
         <MessagesList messages={this.state.messages} />
         <SendMessageForm sendMessage={this.sendMessage} />     
       </div>
