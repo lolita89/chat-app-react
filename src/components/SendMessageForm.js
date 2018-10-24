@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './css/sendMessage.css';
 
 class SendMessageForm extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class SendMessageForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="send-message">
                 <form
                     onSubmit={this.handleSubmit}
                     className="send-message-form">

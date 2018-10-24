@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './css/roomList.css';
 
 class RoomList extends React.Component {
     constructor(props) {

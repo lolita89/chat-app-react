@@ -10,7 +10,7 @@ class NewRoomForm extends React.Component {
     render() {
         return (
             <div>
-                create room
+                create room +
             </div>
         );
     }
